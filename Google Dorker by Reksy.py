@@ -7,7 +7,6 @@ import argparse
 import getpass
 import time
 
-# Yeni ASCII Sanatı
 ascii_art = '''
  ██▀███     ▓█████     ██ ▄█▀     ██████    ▓██   ██▓
 ▓██ ▒ ██▒   ▓█   ▀     ██▄█▒    ▒██    ▒     ▒██  ██▒
@@ -21,7 +20,7 @@ ascii_art = '''
                                              ░ ░     
 '''
 
-# Şifre kontrolü
+
 def sifre_kontrol():
     dogru_sifre = "turkhackteam"
     for _ in range(3):
@@ -34,10 +33,10 @@ def sifre_kontrol():
     print("Çok fazla başarısız girişim, program sonlandırılıyor.")
     return False
 
-# Günlük ayarları
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Hata yönetimi ve yeniden deneme mantığı
+
 def yeniden_dene(url, headers, retries=3):
     for _ in range(retries):
         try:
@@ -49,7 +48,7 @@ def yeniden_dene(url, headers, retries=3):
             time.sleep(5)
     return None
 
-# Google Dork işlemi
+
 def google_dork(query, num_results=10):
     query = urllib.parse.quote_plus(query)
     url = f"https://www.google.com/search?q={query}&num={num_results}"
@@ -80,7 +79,7 @@ def google_dork(query, num_results=10):
     
     return results
 
-# Sonuçları ekrana yazdır
+
 def yazdir_sonuclar(results):
     for result in results:
         print(f"Başlık: {result['title']}")
@@ -88,7 +87,7 @@ def yazdir_sonuclar(results):
         print(f"Özet: {result['snippet']}\n")
         print("-" * 80 + "\n")
 
-# Kullanıcıdan dorking sorguları al
+
 def al_kullanici_sorgulari():
     queries = []
     print("Google Dorking sorgularınızı girin (bitirmek için 'done' yazın):")
@@ -99,11 +98,11 @@ def al_kullanici_sorgulari():
         queries.append(query)
     return queries
 
-# Ana fonksiyon
+
 def main():
-    # Başlangıçta ASCII sanatını yazdır
+
     print(ascii_art)
-    time.sleep(5)  # Kodun işleyişi 5 saniye bekle
+    time.sleep(5)
 
     if not sifre_kontrol():
         return
